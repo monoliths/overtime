@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show]
   def show
-    @post = Post.find_by_id(params[:id])
   end
-  def index
 
+  def index
   end
 
   def new
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      render @post
+      redirect_to @post, notice: "Your post was created successfuly."
     else
       render 'new'
     end
@@ -22,5 +22,9 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:date, :rationale)
+  end
+
+  def set_post
+    @post = Post.find_by_id(params[:id])
   end
 end
