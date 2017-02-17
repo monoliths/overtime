@@ -41,6 +41,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
   gem 'database_cleaner'
+
+  # Test data generator
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -58,4 +61,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # User authentication solution
 gem 'devise'
 
+# CSS design
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+# Fake data generator
+gem 'faker'

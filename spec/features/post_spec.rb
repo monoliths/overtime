@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'navigate' do
   before do
-    @user = User.create(email: "test@test.com", password: "asdasd", password_confirmation: "asdasd", first_name: "bob", last_name: "smith")
+    @user = FactoryGirl.create(:user)
     login_as(@user, :scope => :user)
   end
 
@@ -19,12 +19,12 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      @post1 = @user.posts.create(date: Date.today, rationale: 'post 1')
-      @post2 = @user.posts.create(date: Date.today, rationale: 'post 2')
-      @post3 = @user.posts.create(date: Date.today, rationale: 'post 3')
+      @post1 = FactoryGirl.create(:post, user: @user)
+      @post2 = FactoryGirl.create(:second_post, user: @user)
       # need to revisit the post index since we created post records
       visit posts_path
-      expect(page).to have_content(/post 1|post 2|post3/)
+      expect(page).to have_content(/Thug lyfe/)
+      expect(page).to have_content(/Derp/)
     end
   end
 
