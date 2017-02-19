@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show]
+  before_action :set_post, only: [:show, :edit, :update]
   def show
   end
 
@@ -15,9 +15,20 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      redirect_to @post, notice: "Your post was created successfuly."
+      redirect_to @post, notice: 'Your post was created successfuly.'
     else
-      render 'new'
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Your post was updated successfuly.'
+    else
+      render :edit
     end
   end
 
