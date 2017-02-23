@@ -15,7 +15,7 @@ describe 'navigate' do
     end
 
     it 'has a title of post' do
-      expect(page).to have_content("Posts Index")
+      expect(page).to have_content('Posts Index')
     end
 
     it 'has a list of posts' do
@@ -26,6 +26,15 @@ describe 'navigate' do
       expect(page).to have_content(/Thug lyfe/)
       expect(page).to have_content(/Derp/)
     end
+  end
+
+  describe 'navbar' do
+    it 'can navigate to a new post form' do
+      visit root_path
+      click_link('new_post_from_nav')
+      expect(page.status_code).to eq(200)
+    end
+
   end
 
   describe 'creation' do
@@ -73,5 +82,16 @@ describe 'navigate' do
       visit posts_path
       expect(page).to have_content(/Updated rationale/)
     end
+  end
+
+  describe 'delete' do
+
+    it 'can be deleted' do
+      @post = FactoryGirl.create(:post, user: @user)
+      visit posts_path
+      click_link("delete_post_#{@post.id}_from_index")
+      expect(page.status_code).to eq(200)
+    end
+
   end
 end

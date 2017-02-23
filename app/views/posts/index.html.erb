@@ -1,4 +1,7 @@
-<h1>Posts Index</h1>
+<h1>
+  Posts Index
+  <%= link_to 'New Post', new_post_path, class: "btn btn-sm btn-primary pull-right" %>
+</h1>
 
 <table class="table table-striped">
     <thead>
@@ -7,6 +10,7 @@
           <th>Date</th>
           <th>User</th>
           <th>Rationale</th>
+          <th></th>
           <th></th>
         </tr>
     </thead>

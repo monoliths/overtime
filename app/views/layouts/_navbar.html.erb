@@ -12,6 +12,9 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="<%= route_active?(posts_path) %>"><%= link_to 'Time Entries', posts_path %></li>
+                <li class="<%= route_active?(new_post_path) %>">
+                  <%= link_to 'Add New Entry', new_post_path, id: "new_post_from_nav" %>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
