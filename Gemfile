@@ -66,3 +66,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 
 # Fake data generator
 gem 'faker'
+
+# pretty notifications
+gem "gritter", "1.2.0"
