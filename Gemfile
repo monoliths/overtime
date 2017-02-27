@@ -69,3 +69,7 @@ gem 'faker'
 
 # pretty notifications
 gem "gritter", "1.2.0"
+
+
+# nice set of icons
+gem "font-awesome-rails"
