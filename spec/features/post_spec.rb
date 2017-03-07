@@ -78,7 +78,7 @@ describe 'navigate' do
     it 'can be updated with new params' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Updated rationale'
-      click_on 'Update'
+      click_on 'Save'
       visit posts_path
       expect(page).to have_content(/Updated rationale/)
     end
