@@ -39,7 +39,12 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:date, :rationale, :status)
+    # Only Permin status on admin users
+    if User.admin?(current_user)
+      params.require(:post).permit(:date, :rationale, :status)
+    else
+      params.require(:post).permit(:date, :rationale)
+    end
   end
 
   def set_post

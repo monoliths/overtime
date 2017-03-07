@@ -7,7 +7,7 @@ FactoryGirl.define do
     last_name 'smith'
   end
 
-  factory :second_user, class: "User" do
+  factory :second_user, class: 'User' do
     email 'luneth@example.com'
     password 'asdasd'
     password_confirmation 'asdasd'
