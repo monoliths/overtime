@@ -76,3 +76,6 @@ gem "font-awesome-rails"
 # admin panel
 gem "administrate", "~> 0.3.0"
 gem "bourbon"
+
+# Minimal authorization through OO design and pure Ruby classes
+gem 'pundit'
