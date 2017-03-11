@@ -3,12 +3,13 @@ require 'rails_helper'
 describe 'navigate' do
   before do
     @admin_user = FactoryGirl.create(:admin_user)
+    @user = FactoryGirl.create(:user)
     login_as(@admin_user, scope: :user)
   end
 
   describe 'edit' do
     before do
-      @post = FactoryGirl.create(:post, user: @admin_user)
+      @post = FactoryGirl.create(:post, user: @user)
       visit edit_post_path(@post)
     end
 
@@ -18,9 +19,8 @@ describe 'navigate' do
       expect(@post.reload.status).to eq('approved')
     end
 
-    it 'has a status that cannot be edited on the form by an admin' do
-      logout(:user)
-      @user = FactoryGirl.create(:user)
+    it 'has a status that cannot be edited on the form by an non admin' do
+      logout(@admin_user)
       login_as(@user, scope: :user)
       visit edit_post_path(@post)
       expect(page).to_not have_content('Approved')

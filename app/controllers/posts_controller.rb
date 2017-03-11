@@ -22,9 +22,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authorize @post
   end
 
   def update
+    authorize @post
     if @post.update(post_params)
       redirect_to @post, notice: 'Your post was updated successfuly.'
     else
@@ -50,4 +52,10 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find_by_id(params[:id])
   end
+
+  def user_not_authorized
+    flash[:notice] = "Not Authorized: This post does not belong to your account!"
+    redirect_to root_path
+  end
+
 end

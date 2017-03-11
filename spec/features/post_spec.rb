@@ -82,6 +82,14 @@ describe 'navigate' do
       visit posts_path
       expect(page).to have_content(/Updated rationale/)
     end
+
+    it 'cannot be edited by a non authorized user' do
+      logout(:user)
+      non_authorized_user = FactoryGirl.create(:non_authorized_user)
+      login_as(non_authorized_user, scope: :user)
+      visit edit_post_path(@post)
+      expect(current_path).to eq(root_path)
+    end
   end
 
   describe 'delete' do

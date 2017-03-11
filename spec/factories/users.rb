@@ -22,4 +22,12 @@ FactoryGirl.define do
     first_name 'admin'
     last_name 'user'
   end
+
+  factory :non_authorized_user, class: 'User' do
+    email 'gilg@example.com'
+    password 'asdasd'
+    password_confirmation 'asdasd'
+    first_name 'gilg'
+    last_name 'god'
+  end
 end
