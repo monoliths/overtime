@@ -10,4 +10,11 @@ FactoryGirl.define do
     rationale 'Derp'
     association :user, factory: :user
   end
+
+  factory :post_from_other_user do
+    date Date.today
+    rationale 'another users post'
+    association :user, factory: :user
+  end
+
 end

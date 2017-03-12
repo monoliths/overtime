@@ -19,12 +19,21 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      @post1 = FactoryGirl.create(:post, user: @user)
-      @post2 = FactoryGirl.create(:second_post, user: @user)
+      post1 = FactoryGirl.create(:post, user: @user)
+      post2 = FactoryGirl.create(:second_post, user: @user)
       # need to revisit the post index since we created post records
       visit posts_path
       expect(page).to have_content(/Thug lyfe/)
       expect(page).to have_content(/Derp/)
+    end
+
+    it 'has a list of posts from the logged in user' do
+      post1 = FactoryGirl.create(:post, user: @user)
+      post2 = FactoryGirl.create(:second_post, user: @user)
+      other_user = FactoryGirl.create(:non_authorized_user)
+      other_post = FactoryGirl.create(:second_post, user: other_user)
+      visit posts_path
+      expect(page).to_not have_content(/another users post/)
     end
   end
 
