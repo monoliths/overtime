@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def user_not_authorized
-    flash[:notice] = "Not Authorized: This post does not belong to your account!"
+    flash[:alert] = "Not Authorized: This post does not belong to your account!"
     redirect_to root_path
   end
 
