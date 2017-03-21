@@ -6,7 +6,7 @@ users = [luneth, ramiel, artemios]
 puts '3 users created'
 
 100.times do |post|
-  Post.create(date: Date.today, rationale: "#{post} rat content", user_id: users[post % 3].id)
+  Post.create(date: Date.today, rationale: "#{post} rat content", user_id: users[post % 3].id, overtime_request: 2.5)
 end
 
 puts "100 posts have been created"
