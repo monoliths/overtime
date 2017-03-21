@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe 'navigate' do
+  let(:user) { FactoryGirl.create(:user) }
   before do
-    @user = FactoryGirl.create(:user)
-    login_as(@user, :scope => :user)
+    # user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
   end
 
   describe 'index' do
@@ -19,8 +20,8 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      post1 = FactoryGirl.create(:post, user: @user)
-      post2 = FactoryGirl.create(:second_post, user: @user)
+      post1 = FactoryGirl.create(:post, user: user)
+      post2 = FactoryGirl.create(:second_post, user: user)
       # need to revisit the post index since we created post records
       visit posts_path
       expect(page).to have_content(/Thug lyfe/)
@@ -28,8 +29,8 @@ describe 'navigate' do
     end
 
     it 'has a list of posts from the logged in user' do
-      post1 = FactoryGirl.create(:post, user: @user)
-      post2 = FactoryGirl.create(:second_post, user: @user)
+      post1 = FactoryGirl.create(:post, user: user)
+      post2 = FactoryGirl.create(:second_post, user: user)
       other_user = FactoryGirl.create(:non_authorized_user)
       other_post = FactoryGirl.create(:second_post, user: other_user)
       visit posts_path
@@ -64,13 +65,13 @@ describe 'navigate' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'El Barto was here'
       click_on 'Save'
-      expect(Post.last.user).to eq(@user)
+      expect(Post.last.user).to eq(user)
     end
   end
 
   describe 'edit' do
     before do
-      @post = FactoryGirl.create(:post, user: @user)
+      @post = FactoryGirl.create(:post, user: user)
       visit edit_post_path(@post)
     end
 
@@ -104,9 +105,9 @@ describe 'navigate' do
   describe 'delete' do
 
     it 'can be deleted' do
-      @post = FactoryGirl.create(:post, user: @user)
+      post = FactoryGirl.create(:post, user: user)
       visit posts_path
-      click_link("delete_post_#{@post.id}_from_index")
+      click_link("delete_post_#{post.id}_from_index")
       expect(page.status_code).to eq(200)
     end
 

@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.posts_by current_user
+    if User.admin?(current_user)
+      @posts = Post.all
+    else
+      @posts = Post.posts_by current_user
+    end
   end
 
   def new

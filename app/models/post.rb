@@ -6,5 +6,5 @@ class Post < ApplicationRecord
   enum status: { submitted: 0, approved: 1, rejected: 2 }
 
   # DB scope that returns all post given a user
-  scope :posts_by, ->(user) { where(user_id: user.id)   }
+  scope :posts_by, -> (user) { where(user_id: user.id) }
 end

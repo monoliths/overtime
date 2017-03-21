@@ -26,5 +26,12 @@ describe 'navigate' do
       expect(page).to_not have_content('Approved')
     end
 
+    it 'it should not be editable by post creator when post has been approved' do
+      @post.update(status: 'approved')
+      logout(@admin_user)
+      login_as(@user, scope: :user)
+      visit edit_post_path(@post)
+      expect(current_path).to eq(root_path)
+    end
   end
 end

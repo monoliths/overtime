@@ -4,9 +4,16 @@
   <td><%= post.user.full_name %></td>
   <td><%= truncate(post.rationale) %></td>
   <td>
-    <%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" %>
+    <%= status_label post.status %>
   </td>
   <td>
-    <%= link_to 'Delete', post_path(post), id: "delete_post_#{post.id}_from_index", method: :delete %>
+    <% if post.submitted? %>
+      <%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" %>
+    <% end %>
+  </td>
+  <td>
+    <% if post.submitted? %>
+      <%= link_to 'Delete', post_path(post), id: "delete_post_#{post.id}_from_index", method: :delete %>
+    <% end %>
   </td>
 </tr>
