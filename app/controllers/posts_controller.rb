@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     if User.admin?(current_user)
       params.require(:post).permit(:date, :rationale, :status)
     else
-      params.require(:post).permit(:date, :rationale)
+      params.require(:post).permit(:date, :rationale, :overtime_request)
     end
   end
 

@@ -51,6 +51,7 @@ describe 'navigate' do
     before do
       visit new_post_path
     end
+
     it 'has a new form that can be reached' do
       expect(page.status_code).to eq(200)
     end
@@ -58,12 +59,14 @@ describe 'navigate' do
     it 'can be created from a new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Some rationale'
-      click_on 'Save'
+      fill_in 'post[overtime_request]', with: 2.5
+      expect { click_on 'Save' }.to change(Post, :count).by(1)
     end
 
-    xit 'will have a user associrated to it' do
+    it 'will have a user associated to it' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'El Barto was here'
+      fill_in 'post[overtime_request]', with: 2.5
       click_on 'Save'
       expect(Post.last.user).to eq(user)
     end
