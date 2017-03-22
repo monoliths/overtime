@@ -70,9 +70,6 @@ gem 'faker'
 # pretty notifications
 gem "gritter", "1.2.0"
 
-# nice set of icons
-gem "font-awesome-rails"
-
 # admin panel
 gem "administrate", "~> 0.3.0"
 gem "bourbon"
@@ -80,5 +77,8 @@ gem "bourbon"
 # Minimal authorization through OO design and pure Ruby classes
 gem 'pundit'
 
-# nice icons
-gem 'font-awesome-rails'
+# text API
+gem 'twilio-ruby', '~> 4.11.1'
+
+# load env vars before everything else
+gem 'dotenv-rails', groups: [:development, :test]
