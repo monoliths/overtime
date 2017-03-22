@@ -79,3 +79,6 @@ gem "bourbon"
 
 # Minimal authorization through OO design and pure Ruby classes
 gem 'pundit'
+
+# nice icons
+gem 'font-awesome-rails'
