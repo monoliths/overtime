@@ -26,6 +26,7 @@ class UserDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
     password: Field::String.with_options(searchable: false),
+    phone: Field::String.with_options(searchable: false),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -45,6 +46,7 @@ class UserDashboard < Administrate::BaseDashboard
     :posts,
     :id,
     :email,
+    :phone,
     :encrypted_password,
     :reset_password_token,
     :reset_password_sent_at,
@@ -70,6 +72,7 @@ class UserDashboard < Administrate::BaseDashboard
     :first_name,
     :last_name,
     :type,
+    :phone
   ].freeze
 
   # Overwrite this method to customize how users are displayed

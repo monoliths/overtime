@@ -5,6 +5,7 @@ FactoryGirl.define do
     password_confirmation 'asdasd'
     first_name 'bob'
     last_name 'smith'
+    phone '9499231222'
   end
 
   factory :second_user, class: 'User' do
@@ -13,6 +14,7 @@ FactoryGirl.define do
     password_confirmation 'asdasd'
     first_name 'luneth'
     last_name 'ur'
+    phone '9499231222'
   end
 
   factory :admin_user, class: 'AdminUser' do
@@ -21,6 +23,7 @@ FactoryGirl.define do
     password_confirmation 'asdasd'
     first_name 'admin'
     last_name 'user'
+    phone '9499231222'
   end
 
   factory :non_authorized_user, class: 'User' do
@@ -29,5 +32,6 @@ FactoryGirl.define do
     password_confirmation 'asdasd'
     first_name 'gilg'
     last_name 'god'
+    phone '9499231222'
   end
 end
