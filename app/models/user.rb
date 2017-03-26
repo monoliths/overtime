@@ -5,7 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :phone, presence: true
+  VALID_PHONE_REGEX = /[0-9]{10}/
+  validates :phone, presence: true,
+                    format: { with: VALID_PHONE_REGEX },
+                    length: { is: 10 }
   has_many :posts
 
   def full_name
