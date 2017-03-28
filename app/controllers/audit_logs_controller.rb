@@ -1,5 +1,5 @@
 class AuditLogsController < ApplicationController
   def index
-    #code
+    @audit_logs = AuditLog.all
   end
 end
