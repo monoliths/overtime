@@ -4,6 +4,9 @@ class AuditLog < ApplicationRecord
   validates :start_date, presence: true
   after_initialize :set_defaults
 
+  # allows usage of symbols which represent numerical states on the DB
+  enum status: { submitted: 0, approved: 1, rejected: 2 }
+
 
   private
     def set_defaults
