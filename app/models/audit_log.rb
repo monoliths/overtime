@@ -5,7 +5,7 @@ class AuditLog < ApplicationRecord
   after_initialize :set_defaults
 
   # allows usage of symbols which represent numerical states on the DB
-  enum status: { submitted: 0, approved: 1, rejected: 2 }
+  enum status: { pending: 0, confirmed: 1 }
 
 
   private
