@@ -5,9 +5,9 @@ class PostsController < ApplicationController
 
   def index
     if User.admin?(current_user)
-      @posts = Post.all
+      @posts = Post.all.page params[:page]
     else
-      @posts = Post.posts_by current_user
+      @posts = Post.posts_by(current_user).page params[:page]
     end
   end
 

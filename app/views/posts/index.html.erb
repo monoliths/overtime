@@ -1,23 +1,29 @@
-<h1>
-  Posts Index
-  <%= link_to 'New Post', new_post_path, class: "btn btn-sm btn-primary pull-right" %>
-</h1>
+<div class="row">
+  <h1 class="text-center">
+    Time Entries
+  </h1>
+    <%= link_to 'New Post', new_post_path, class: "btn btn-sm btn-primary" %>
+    <div class="pull-right">
+      <%= paginate @posts %>
+    </div>
+</div>
+<div class="row">
+  <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>#</th>
+            <th>Overtime Requested</th>
+            <th>Date</th>
+            <th>User</th>
+            <th>Rationale</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody>
+        <%= render @posts %>
+      </tbody>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-          <th>#</th>
-          <th>Overtime Requested</th>
-          <th>Date</th>
-          <th>User</th>
-          <th>Rationale</th>
-          <th>Status</th>
-          <th></th>
-          <th></th>
-        </tr>
-    </thead>
-    <tbody>
-      <%= render @posts %>
-    </tbody>
-
-</table>
+  </table>
+</div>

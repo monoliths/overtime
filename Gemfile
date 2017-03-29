@@ -82,3 +82,6 @@ gem 'twilio-ruby', '~> 4.11.1'
 
 # load env vars before everything else
 gem 'dotenv-rails', groups: [:development, :test]
+
+# pagination
+gem 'kaminari'
