@@ -2,10 +2,7 @@
   <h1 class="text-center">
     Time Entries
   </h1>
-    <%= link_to 'New Post', new_post_path, class: "btn btn-sm btn-primary" %>
-    <div class="pull-right">
-      <%= paginate @posts %>
-    </div>
+    <%= link_to 'New Post', new_post_path, class: "btn btn-sm btn-primary pull-right" %>
 </div>
 <div class="row">
   <table class="table table-striped">
@@ -26,4 +23,10 @@
       </tbody>
 
   </table>
+</div>
+
+<div class="row">
+  <div class="text-center">
+    <%= paginate @posts %>
+  </div>
 </div>
